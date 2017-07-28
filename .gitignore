@@ -1,0 +1,7 @@
+/.ideaDataSources/
+/.gradle/
+/logs/
+/build/
+*.ipr
+*.iws
+*.iml
