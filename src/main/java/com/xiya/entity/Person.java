@@ -1,6 +1,5 @@
 package com.xiya.entity;
 
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -11,13 +10,13 @@ public class Person {
     private int id;
     private String name;
     private int age;
-    private LocalDate birth;
+    private Date birth;
     private String email;
 
     public Person() {
     }
 
-    public Person(int id, String name, int age, LocalDate birth, String email) {
+    public Person(int id, String name, int age, Date birth, String email) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -25,7 +24,7 @@ public class Person {
         this.email = email;
     }
 
-    public Person(String name, int age, LocalDate birth, String email) {
+    public Person(String name, int age, Date birth, String email) {
         this.name = name;
         this.age = age;
         this.birth = birth;
@@ -56,11 +55,11 @@ public class Person {
         this.age = age;
     }
 
-    public LocalDate getBirth() {
+    public Date getBirth() {
         return birth;
     }
 
-    public void setBirth(LocalDate birth) {
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
 
@@ -78,7 +77,7 @@ public class Person {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", birth=" + birth +
+                ", birth=" + (birth == null ? null : birth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) +
                 ", email='" + email + '\'' +
                 '}';
     }

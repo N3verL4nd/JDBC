@@ -47,7 +47,7 @@ public class JdbcTest {
         connection.close();
     }
 
-    public Connection getConnection() {
+    public Connection getConnection1() {
         Properties properties = new Properties();
         InputStream in;
         in = getClass().getClassLoader().getResourceAsStream("jdbc.properties");
@@ -88,17 +88,16 @@ public class JdbcTest {
 
     @Test
     public void testGetConnection() {
-        Connection connection = getConnection();
+        Connection connection = getConnection1();
         System.out.println(connection);
     }
 
-    @Test
-    public void testDriverManager() {
+    public Connection getConnection2() {
         Properties properties = new Properties();
         InputStream in;
         in = getClass().getClassLoader().getResourceAsStream("jdbc.properties");
         if (in == null) {
-            return /*null*/;
+            return null;
         }
         try {
             properties.load(in);
@@ -126,8 +125,7 @@ public class JdbcTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(connection);
-//        return connection;
+        return connection;
     }
 
     @Test
@@ -231,7 +229,7 @@ public class JdbcTest {
     }
 
     @Test
-    public void test() {
+    public void testDatabaseMetaData() {
         Connection conn = null;
         DatabaseMetaData metaData = null;
         ResultSet rs = null;

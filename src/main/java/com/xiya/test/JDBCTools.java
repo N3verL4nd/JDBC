@@ -2,9 +2,8 @@ package com.xiya.test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.sql.*;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Created by N3verL4nd on 2017/4/18.
@@ -15,7 +14,7 @@ public class JDBCTools {
      * 获取数据库连接
      * @return Connection
      */
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException{
         Properties properties = new Properties();
         InputStream in;
         in = JDBCTools.class.getClassLoader().getResourceAsStream("jdbc.properties");
@@ -25,26 +24,20 @@ public class JDBCTools {
             e.printStackTrace();
         }
 
-        String driverClassName = properties.getProperty("jdbc.driverClassName");
+        //String driverClassName = properties.getProperty("jdbc.driverClassName");
         String jdbcUrl = properties.getProperty("jdbc.url");
         String user = properties.getProperty("jdbc.username");
         String password = properties.getProperty("jdbc.password");
 
-        /*try {
-            //因为 ServiceLoader 所以不再需要如下函数调用。
+        /*
+        * 因为 ServiceLoader 所以不再需要如下函数调用。
+        try {
             Class.forName(driverClassName);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }*/
-        Connection connection = null;
-        //输出日志
-        DriverManager.setLogWriter(new PrintWriter(System.out));
-        try {
-            connection = DriverManager.getConnection(jdbcUrl, user, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return connection;
+
+        return DriverManager.getConnection(jdbcUrl, user, password);
     }
 
 
