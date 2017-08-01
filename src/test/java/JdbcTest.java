@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.Iterator;
 import java.util.Properties;
 import java.util.ServiceLoader;
 
@@ -23,7 +24,16 @@ public class JdbcTest {
     @Test
     public void testServiceLoader() {
         ServiceLoader<Driver> serviceLoader = ServiceLoader.load(java.sql.Driver.class);
-        serviceLoader.forEach(System.out::println);
+        Iterator<Driver> driversIterator = serviceLoader.iterator();
+        try{
+            while(driversIterator.hasNext()) {
+                Driver driver = driversIterator.next();
+                System.out.println(driver.getClass().getName());
+//                System.out.println(driver.acceptsURL("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=true"));
+            }
+        } catch(Throwable t) {
+            // Do nothing
+        }
     }
 
     /**

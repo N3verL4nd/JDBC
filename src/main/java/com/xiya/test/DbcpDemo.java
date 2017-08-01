@@ -1,15 +1,20 @@
 package com.xiya.test;
 
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
+
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * Created by N3verL4nd on 2017/4/27.
- */
+* @file DbcpDemo.java
+* @CopyRight (C) http://blog.csdn.net/x_iya
+* @Description 使用DBCP数据库连接池
+* @author N3verL4nd
+* @email lgh1992314@qq.com
+* @date 2017/7/31
+*/
 public class DbcpDemo {
     public static void main(String[] args) {
         Properties properties = new Properties();
@@ -19,18 +24,12 @@ public class DbcpDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        BasicDataSource dataSource = null;
+        DataSource dataSource = null;
         try {
             dataSource = BasicDataSourceFactory.createDataSource(properties);
             System.out.println(dataSource.getConnection());
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                dataSource.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
