@@ -33,7 +33,7 @@ public class Test {
             if (rs != null) {
                 try {
                     rs.close();
-                } catch (SQLException e) {
+                } catch ( SQLException e) {
                     e.printStackTrace();
                 }
             }

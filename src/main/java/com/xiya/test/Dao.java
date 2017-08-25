@@ -129,6 +129,7 @@ public class Dao {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     public <E> E getValue(String sql, Object... args) {
         Connection conn = null;
         PreparedStatement statement = null;

@@ -77,7 +77,7 @@ public class Person {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", birth=" + (birth == null ? null : birth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) +
+                ", birth=" + /*(birth == null ? null : birth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate())*/ birth +
                 ", email='" + email + '\'' +
                 '}';
     }
