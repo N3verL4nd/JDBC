@@ -1,5 +1,7 @@
 package com.xiya.test;
 
+import com.xiya.entity.CaseInsensitiveHashMap;
+
 public class T {
     public static void main(String[] args) {
         CaseInsensitiveHashMap map = new CaseInsensitiveHashMap();

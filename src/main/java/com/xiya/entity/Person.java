@@ -13,6 +13,9 @@ public class Person {
     private Date birth;
     private String email;
 
+    public void setSex(String dsd) {
+    }
+
     public Person() {
     }
 

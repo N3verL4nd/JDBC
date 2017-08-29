@@ -1,3 +1,4 @@
+import com.xiya.entity.MyResultHandler;
 import com.xiya.entity.Person;
 import com.xiya.test.JDBCTools;
 import org.apache.commons.dbutils.DbUtils;
@@ -264,5 +265,26 @@ public class DBUtilsTest {
         } finally {
             DbUtils.closeQuietly(connection);
         }
+    }
+
+    @Test
+    public void testMyResultHandler() {
+        Connection connection = null;
+        String sql = "SELECT * FROM persons";
+        try {
+            connection = JDBCTools.getConnection();
+            List<String> list = queryRunner.query(connection, sql, new MyResultHandler(2));
+            list.forEach(System.out::println);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.closeQuietly(connection);
+        }
+    }
+
+    @Test
+    public void test() {
+        System.out.println(Integer.TYPE);
     }
 }

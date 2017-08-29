@@ -1,4 +1,4 @@
-package com.xiya.test;
+package com.xiya.entity;
 
 import java.util.HashMap;
 import java.util.Map;
